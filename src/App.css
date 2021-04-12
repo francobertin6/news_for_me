@@ -1,0 +1,57 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 8vh;
+  width: 8vh;
+  pointer-events: none;
+  position: absolute;
+  left: 2vw;
+  top: 1vh;
+}
+
+header h1{
+  color: white;
+  position: absolute;
+  left: 7vw;
+  top: 2.1vh;
+}
+
+header .fecha{
+  color: white;
+  position: absolute;
+  left: 93.4%;
+  top: 2vh;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 10vh;
+  display: block;
+  position: relative;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+/* component/navigation */
+

@@ -1,0 +1,88 @@
+#conteiner_section{
+
+    width: 70vw;
+    height: 100vh;
+    position: relative;
+
+    left: 28%;
+    top: -83vh;
+
+    
+    
+}
+
+/* --------------------------------------------------------- */
+#conteiner_section .news{
+    width: 75vw;
+    height: 120vh;
+    position: relative;
+    margin: 10px 10px 10px 10px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: space-evenly;
+
+    right: 100px;
+}
+
+#conteiner_section .news div{
+    width: 20vw;
+    height: 40vh;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0vw 1vw 1vw 1vw;
+    position: relative;
+}
+
+/* --------------------------------------------------------- */
+#conteiner_section .news .image_and_title{
+    width: 20vw;
+    height: 30vh;
+    position: absolute;
+}
+
+#conteiner_section .news .image_and_title img{
+    width: 20vw;
+    height: 25vh;
+}
+
+#conteiner_section .news .image_and_title img:hover{
+    filter: blur(2px);
+}
+
+#conteiner_section .news .image_and_title h3{
+    position: absolute;
+    z-index: 2;
+    width: 70%;
+    font-size: 15px;
+    color: white;
+    text-shadow: 2px 2px black;
+    top: 17vh;
+    left: 10px;
+}
+
+/* -------------------------------------------------------- */
+#conteiner_section .news .description{
+    width: 20vw;
+    height: 15vh;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    position: absolute;
+    top: 25vh;
+}
+
+#conteiner_section .news .description p{
+    color: black;
+    font-size: 13px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#conteiner_section .news .description .name{
+    position: absolute;
+    top: 80%;
+    left: 5px;
+}

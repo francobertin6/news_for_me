@@ -1,0 +1,10 @@
+.clock{
+    color: white;
+    position: relative;
+    left: 94%;
+     top: 5vh;
+    font-size: 18px;
+    letter-spacing: 2px;
+    width: max-content;
+    height: max-content;
+}
