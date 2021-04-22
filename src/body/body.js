@@ -12,16 +12,78 @@ async function first_articles(){
 let data = first_articles();
 
 
+class Body extends React.Component{
+    constructor(props){
+        super(props);
+        
+        this.state = {
+            articles : [],
+            news_index : 0
+        }
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    componentDidMount(){
+        // data es la respuesta de la api (jornalia), en base a la busqueda principal de noticias 
+        data.then(resp => {
+            
+            const array_new_array = [];
+            
+            resp = resp.articles.filter(el =>
+                el.imageUrl != null);
+
+                while (resp.length){
+                    array_new_array.push(resp.splice(0,9));
+                }
+             
+            // this.setState modifica el estado con array_new_array que tiene todas las noticias que si tienen imagenes en su objeto
+            this.setState({
+                articles : array_new_array
+            });
+        })
+    }
+
+    handleClick(e){
+        let number = e.target.id;
+
+        this.setState({
+            news_index : number
+        })
+    }
+
+   
+    render(){
+
+        console.log(this.state.articles);
+        // console.log(this.state.news_index);
+
+        return(
+            <div id = "conteiner_section">
+                <CREATE_NEWS    articles = {this.state.articles} news_index = {this.state.news_index} />
+                <CREATE_POINTS  articles = {this.state.articles}  onClick = {this.handleClick}  />
+            </div>
+        )
+    }
+}
+
+
+
+
 function CREATE_NEWS(props){
     let articles = props.articles;
-    // articles carga con las props de la funcion, a esta le daremos el contenido del state en la clase
-    
-    let news = articles.map((elements, idx) =>  {
+    let news_index = props.news_index;
 
-        let imageUrl = elements[idx].imageUrl;
-        let title = elements[idx].title;
-        let description = elements[idx].description;
-        let name = elements[idx].provider.name;
+    console.log(news_index)
+    // articles carga con las props de la funcion, a esta le daremos el contenido del state en la clase
+
+    // IMPORTANTICIMO: ? CLAVE EN ESTE TIPO DE OCACIONES DONDE TE TIRA UNDEFINED CUANDO NO LO ES
+    let news = articles[news_index]?.map((element, idx) => {
+        
+        let imageUrl = element.imageUrl;
+        let title = element.title;
+        let description = element.description;
+        let name = element.provider.name;
 
         // devuelve un div dividido en dos partes, uno con la imagen de la noticia y su titulo y otro con la descripcion
         return(
@@ -36,9 +98,8 @@ function CREATE_NEWS(props){
                 </div>
             </div>
         )
-        
-    });
 
+    });
         // lo que en realidad devuelve la funcion, un div grande que va a ir al contenedor donde guarda todas las noticias
         return(
             <div className = "news">
@@ -49,50 +110,35 @@ function CREATE_NEWS(props){
     }
 
 
+    function CREATE_POINTS(props){
+        let points = props.articles;
+        let lenght_points = points?.length;
+        let array = [];
 
+        for (let index = 0; index < lenght_points; index++) {
+            let point = <div    key= {index} 
+                                id ={index} 
+                                onClick = {props.onClick}> 
 
+                                <p> {index + 1} </p> 
 
-
-class Body extends React.Component{
-    constructor(props){
-        super(props);
-        
-        this.state = {
-            articles : []
+                        </div>
+            array.push(point);
         }
-    }
 
-    componentDidMount(){
-        // data es la respuesta de la api (jornalia), en base a la busqueda principal de noticias 
-        data.then(resp => {
-            
-            const array_new_array = [];
-            
-            resp = resp.articles.filter(el =>
-                el.imageUrl != null);
-
-                while (resp.length){
-                    array_new_array.push(resp.splice(0,8));
-                }
-             
-            // this.setState modifica el estado con array_new_array que tiene todas las noticias que si tienen imagenes en su objeto
-            this.setState({
-                articles : array_new_array
-            });
+        let slider = array.map((element) => {
+            return element
         })
-    }
-
-    
-    render(){
-
-        console.log(this.state.articles)
 
         return(
-            <div id = "conteiner_section">
-                <CREATE_NEWS articles = {this.state.articles} />
+            <div className = "slider_section">
+                {slider}
             </div>
         )
     }
-}
+
+
+
+
 
 export default Body;
