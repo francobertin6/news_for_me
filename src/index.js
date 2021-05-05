@@ -2,14 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Header from './App';
-import Navigation from './Components/navigation';
 import Body from "./body/body";
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header />
-    <Navigation /> 
+    <Header /> 
     <Body />
   </React.StrictMode>,
   document.getElementById('root')
