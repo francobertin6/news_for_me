@@ -8,7 +8,7 @@
   pointer-events: none;
   position: absolute;
   left: 2vw;
-  top: 1vh;
+  top: 2.5vh;
 }
 
 header h1{
@@ -36,9 +36,10 @@ header .fecha{
 
 .App-header {
   background-color: #282c34;
-  min-height: 10vh;
+  min-height: 12vh;
   display: block;
   position: relative;
+  top: -20px;
 }
 
 @keyframes App-logo-spin {

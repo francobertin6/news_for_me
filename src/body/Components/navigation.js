@@ -19,14 +19,14 @@ function Nameofmedia(props){
             let media = props.media;
             let options = media.map((element, idx) => {
                 let elemento = element;
-                return(<option key = {idx}>{elemento.name}</option>)
+                return(<option key = {idx}>{elemento._id}</option>)
             })
 
             return(
                 <div>
-                    <label htmlFor= "media" className="h4">Medios: </label><br />
+                    <p><label htmlFor= "media" className="h4">Medios: </label></p>
                     <select name= "media" id= "medios" onChange={props.onChange} >
-                        <option>elija su medio...</option>
+                        <option value="">elija su medio...</option>
                         {options}
                     </select>
                     
@@ -59,43 +59,43 @@ class Navigation extends React.Component{
 
     render(){
 
-        console.log(this.state.media);
-
         const {handleSearch, handleButton} = this.props;
-
+       
         return(
-            <nav id="nav">
+            <nav id="nav" ref = {this.props.ref_nav}>
                 <form>
                     <div>
-                        <p className="h4">Busqueda:</p> <br />
-                        <input type= "text" placeholder= "inserte busqueda" onDoubleClick={handleSearch} name="name"/>
+                        <p className="h4">Busqueda:</p>
+                        <input type= "text" placeholder= "inserte busqueda" onKeyUp={handleSearch} name="name"/>
                     </div>
                     <div>
                         <Nameofmedia media = {this.state.media} 
                                     onChange = {handleSearch}    />
-                            <br />
-
-                        <label htmlFor= "category" className="h4">Categorias:</label> <br />
+                            
+                    </div>
+                    <div>
+                        <p><label htmlFor= "category" className="h4">Categorias:</label></p>
                         <select name= "category" id="categorias" onChange={handleSearch} ref={this.props.Ref_select} >
-                            <option>elija su categoria...</option>
-                            <option>Ultimas noticias</option>
-                            <option>Locales</option>
-                            <option>Nacionales</option>
-                            <option>Internacionales</option>
-                            <option>Economia</option>
-                            <option>Politica</option>
-                            <option>Policiales</option>
-                            <option>Sociedad</option>
-                            <option>Salud</option>
-                            <option>Cultura</option>
-                            <option>Deportes</option>
-                            <option>Tecnologia</option>
+                            <option value="">elija su categoria...</option>
+                            <option value="ULTIMAS_NOTICIAS">Ultimas noticias</option>
+                            <option value="LOCALES">Locales</option>
+                            <option value="NACIONALES">Nacionales</option>
+                            <option value="INTERNACIONALES">Internacionales</option>
+                            <option value="ECONOMIA">Economia</option>
+                            <option value="POLITICA">Politica</option>
+                            <option value="POLICIALES">Policiales</option>
+                            <option value="SOCIEDAD">Sociedad</option>
+                            <option value="SALUD">Salud</option>
+                            <option value="CULTURA">Cultura</option>
+                            <option value="DEPORTES">Deportes</option>
+                            <option value="TECNOLOGIA">Tecnologia</option>
                         </select>
                     </div>
                     <div>
-                        <p className="h4">Desde:</p> <br />
-                        <input type="date" min="2020-01-01"  onChange={handleSearch} name="date1"/>
-                        <br />
+                        <p className="h4">Desde:</p> 
+                        <input type="date" min="2020-01-01" onChange={handleSearch} name="date1"/>
+                    </div>
+                    <div>
                         <p className="h4">Hasta:</p>
                         <input type="date" onChange={handleSearch} name="date2"/>
                     </div>
